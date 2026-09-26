@@ -1,0 +1,26 @@
+@page "/conversor"
+@rendermode InteractiveServer
+
+<h3>Conversor de Temperatura</h3>
+
+<div class="mb-3">
+    <label class="form-label">Temperatura em Celsius (°C):</label>
+    <input type="number" class="form-control" @bind="celsius" style="max-width: 300px;" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="Converter">Converter</button>
+
+@if (fahrenheit.HasValue)
+{
+    <p><strong>Resultado:</strong> @celsius °C equivalem a <strong>@fahrenheit °F</strong></p>
+}
+
+@code {
+    private double celsius;
+    private double? fahrenheit;
+
+    private void Converter()
+    {
+        fahrenheit = (celsius * 9 / 5) + 32;
+    }
+}
